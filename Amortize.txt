@@ -1,0 +1,11 @@
+import java.text.SimpleDateFormat; 
+Class Amortize{
+
+	public static void main(String args[]) {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy"); 
+		sdf.
+		List<Integer> result = amortize("")
+		
+	
+	}
+}

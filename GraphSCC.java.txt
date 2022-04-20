@@ -1,0 +1,90 @@
+class GraphSCC{
+	public int V;
+	public LinkedList<Integer> adj[];
+	
+	Graph(int v){
+		this.V=v;
+		adj = new LinkedList[v];
+		for(int i=0;i<v;i++) {
+			adj[i] = new LinkedList<Integer>();
+		}
+	}
+	
+	public void addEdge(int u, int v) {
+		adj[u].add(v);
+	}
+	
+	public void fillOrder(int i, boolean visited[], Stack<Integer> stack) {
+		visited[i] = true;
+		Iterator<Integer> iterator = adj[i].listIterator();
+		while(iterator.hasNext()) {
+			int node = iterator.next();
+			if(!visited[node]) {
+				fillOrder(node, visited);
+				stack.push(node);
+			}
+		}
+	}
+	
+	public void dfsUtil(int v, boolean visited[], Stack<Integer> stack) {
+		System.out.print(v);
+		visited[v] = true;
+		Iterator<Integer> iterator = adj[v].listIterator();
+		while(iterator.hasNext()) {
+			int node = iterator.next();
+			if(!visited[node]) {
+				dfsUtil(node, visited);
+			}
+		}
+	}
+	
+	public Graph getTranspose() {
+		Graph g = new Graph(V);
+		for(int i=o ;i<V ;i++){
+			Iterator<Integer> iterator = new ListIterator<Integer>();
+			while(iterator.hasNext()) {
+				g.adj[iterator.next()].add(i);
+			}
+		}
+		return g;
+	}
+	
+	public void printSCC() {
+		Stack<Integer> stack = new Stack<Integer>();
+		boolean vidited[] =  new boolean[V];
+		for(int i=0;i<V;i++) {
+			if(!visited[i]) {
+				fillOrder(i,visited, stack);
+				stack.push(i);
+			}
+		}
+		
+		Graph g = getTranspose();
+		
+		for(int i=0;i<V;i++)
+			visiter[i] = false;
+		
+		while(stack.isEmpty()) {
+			int i = stack.pop();
+			if(!visited[i]) {
+				dfsUtil(i, visited);
+				System.out.println();
+			}
+		}
+		
+	}
+	
+	
+	public static void main(String args[]) {
+		Graph g = new Graph(5); 
+        g.addEdge(1, 0); 
+        g.addEdge(0, 2); 
+        g.addEdge(2, 1); 
+        g.addEdge(0, 3); 
+        g.addEdge(3, 4); 
+		g.printSCC();
+	
+	}
+
+
+}
