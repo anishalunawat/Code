@@ -1,7 +1,6 @@
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.Period;
-import java.util.List;
 import java.lang.Math;
 class Amortize{
 	public static int getDays(LocalDate date) {

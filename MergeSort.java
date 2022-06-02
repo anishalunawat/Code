@@ -1,4 +1,3 @@
-import java.io.*;
 
 class MergeSort {
 	private static void mergeSortedArray(int[] array, int start, int mid, int end) {
